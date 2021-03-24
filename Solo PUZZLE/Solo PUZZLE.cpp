@@ -1,13 +1,11 @@
 ﻿#include <iostream>
 #include <fstream>
-#include "Coordenada.h"
-#include "JuegoPM.h"
+#include <Windows.h>
+#include "UtilidadeSYS.h"
 #include "Matriz.h"
+#include "JuegoPM.h"
 using namespace std;
-const int DIM_MAX = 64;
-const int MATRIZ_MAX = 10;
-typedef unsigned char tColor[MATRIZ_MAX];
-typedef int Matriz[DIM_MAX][DIM_MAX];
 
 int main(){
+	cout << "DE MOMENTO TODO VA BIEN" << endl;
 }

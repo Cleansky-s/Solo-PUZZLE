@@ -1,11 +1,12 @@
 #ifndef MATRIZ
 #define MATRIZ
+#include "Coordenada.h"
 using namespace std;
+typedef int Matriz[DIM_MAX][DIM_MAX];
 typedef struct {
     Matriz Matriz;
-    tColor Color;
+    uint8 color;
 }tMatrizChar;
-
 
 bool cargar(tMatrizChar& mat, istream& ent) {
     int num_F, num_C;
@@ -25,9 +26,20 @@ bool cargar(tMatrizChar& mat, istream& ent) {
     return estado;
 }
 bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {
-    int i;
-    bool tue;
-    return tue;
+    int i=0;
+    int j=0;
+    bool igual = true;
+    while (i < DIM_MAX && igual) {
+        while (j < DIM_MAX && igual) {
+            if (mat1.Matriz[i][j] == mat2.Matriz[i][j]) {
+                j++;
+            }
+            else igual = false;
+        }
+        i++;
+    }
+
+    return igual;
 }
 bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2);
 bool swapF(tMatrizChar& mat, int f1, int f2);

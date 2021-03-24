@@ -145,6 +145,7 @@
     <ClInclude Include="Coordenada.h" />
     <ClInclude Include="JuegoPM.h" />
     <ClInclude Include="Matriz.h" />
+    <ClInclude Include="UtilidadeSYS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

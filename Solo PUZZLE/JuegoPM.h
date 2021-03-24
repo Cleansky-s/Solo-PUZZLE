@@ -3,7 +3,7 @@
 using namespace std;
 
 typedef struct {
-    tMatrizChar tMatriz;
+    tMatrizChar Matriz;
     int Num_Max_Acc;
     string Modo;
 }tJuegoPM;
