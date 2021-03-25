@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coordenada.cpp" />
+    <ClCompile Include="JuegoPM.cpp" />
+    <ClCompile Include="Matriz.cpp" />
     <ClCompile Include="Solo PUZZLE.cpp" />
+    <ClCompile Include="UtilidadeSYS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordenada.h" />

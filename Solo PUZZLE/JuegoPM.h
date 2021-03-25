@@ -1,13 +1,13 @@
 #ifndef JUEGOPM
 #define JUEGOPM
-using namespace std;
+#include "Matriz.h"
+#include <iostream>
 
 typedef struct {
     tMatrizChar Matriz;
     int Num_Max_Acc;
     string Modo;
 }tJuegoPM;
-
 
 void mainJuegoPM();
 int menu();

@@ -18,6 +18,18 @@
     <ClCompile Include="Solo PUZZLE.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Coordenada.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="JuegoPM.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Matriz.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilidadeSYS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordenada.h">
