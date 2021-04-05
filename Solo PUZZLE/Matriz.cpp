@@ -20,6 +20,7 @@ bool cargar(tMatrizChar& mat, istream& ent) {
     }
     return estado;
 }
+
 bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {
     int i = 0;
     int j = 0;
@@ -36,9 +37,20 @@ bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {
 
     return estado;
 }
-bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
 
+bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
+    bool estado = false;
+    Matriz aux;
+    if (pos2.x > mat.rango_x || pos2.y > mat.rango_y) {
+    }
+    else {
+        aux = mat.Matriz[pos1.x][pos1.y];
+        mat.Matriz[pos1.x][pos1.y] = mat.Matriz[pos2.x][pos2.y];
+        mat.Matriz[pos2.x][pos2.y] = aux;
+    }
+    return estado;
 }
+
 bool swapF(tMatrizChar& mat, int f1, int f2);
 bool swapC(tMatrizChar& mat, int c1, int c2);
 bool swapD(tMatrizChar& mat, int d);
