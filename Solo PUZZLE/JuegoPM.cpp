@@ -4,8 +4,9 @@ using namespace std;
 
 
 int menu() {
-
+	return 0;
 }
+
 bool iniciar(tJuegoPM& jpm, string modo, int num) {
 	bool estado = true;
 	cout << " Elegir el modo que quieras:" << endl;
