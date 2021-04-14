@@ -4,9 +4,8 @@
 using namespace std;
 
 bool cargar(tMatrizChar& mat, istream& ent) {
-    int num_F, num_C;
     bool estado;
-    cin >> mat.rango_x >> mat.rango_y;
+    ent >> mat.rango_x >> mat.rango_y; 
     if (!cin) {
         estado = false;
     }
@@ -91,7 +90,7 @@ bool swapD(tMatrizChar& mat, int d) {
     bool estado = true;
     uint8 aux[100];
     d = d - 1;
-    if (d > rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
+    if (d > mat.rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
         estado = false;
     }
     else {
@@ -128,7 +127,7 @@ bool voltearC(tMatrizChar& mat, int c){
     bool estado = true;
     uint8 aux[100];
 
-    if (f > mat.rango_y) {
+    if (c > mat.rango_y) {
         estado = false;
     }
     else {
@@ -143,7 +142,19 @@ bool voltearC(tMatrizChar& mat, int c){
     return estado;
 }
 bool voltearD(tMatrizChar& mat, int d) {
-
+    bool estado = true;
+    uint8 aux[100];
+    if (d > mat.rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
+        estado = false;
+    }
+    else {
+        for (int i = d; i < mat.rango_x; i++) {
+            int j = 0;
+            aux[i] = mat.Matriz[i][j];
+            j++;
+        }
+    }
+    return estado;
 }
 void voltearV(tMatrizChar& mat);
 void voltearH(tMatrizChar& mat);

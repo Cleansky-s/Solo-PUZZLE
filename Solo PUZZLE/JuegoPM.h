@@ -2,9 +2,11 @@
 #define JUEGOPM
 #include "Matriz.h"
 #include <iostream>
+#include <iomanip>
 
 typedef struct {
     tMatrizChar Matriz;
+    tMatrizChar Matriz_Des;
     int Num_Max_Acc;
     string Modo;
 }tJuegoPM;
