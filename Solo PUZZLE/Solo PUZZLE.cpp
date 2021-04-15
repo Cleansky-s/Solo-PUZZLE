@@ -19,5 +19,5 @@ int main() {
 			pausa();
 		}
 	}
-	else errc << "Cant load the file, Try again" << endl;
+	else cout << "Cant load the file, Try again" << endl;
 }
