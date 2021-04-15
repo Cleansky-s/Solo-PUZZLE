@@ -50,11 +50,9 @@ bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
     return estado;
 }
 
-bool swapF(tMatrizChar& mat, int f1, int f2) {
+bool swapC(tMatrizChar& mat, int f1, int f2) {
     bool estado = true;
     uint8 aux[100];
-    f1 = f1 - 1;
-    f2 = f2 - 1;
     if (f1 > mat.rango_x || f2 > mat.rango_x) {
         estado = false;
     }
@@ -68,11 +66,9 @@ bool swapF(tMatrizChar& mat, int f1, int f2) {
     return estado;
 }
 
-bool swapC(tMatrizChar& mat, int c1, int c2){
+bool swapF(tMatrizChar& mat, int c1, int c2){
     bool estado = true;
     uint8 aux[100];
-    c1 = c1 - 1;
-    c1 = c1 - 1;
     if (c1 > mat.rango_y || c1 > mat.rango_y) {
         estado = false;
     }
@@ -85,11 +81,9 @@ bool swapC(tMatrizChar& mat, int c1, int c2){
     }
     return estado;
 }
-
 bool swapD(tMatrizChar& mat, int d) {
     bool estado = true;
     uint8 aux[100];
-    d = d - 1;
     if (d > mat.rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
         estado = false;
     }
@@ -104,7 +98,6 @@ bool swapD(tMatrizChar& mat, int d) {
     }
     return estado;
 }
-
 bool voltearF(tMatrizChar& mat, int f) {
     bool estado = true;
     uint8 aux[100];
@@ -143,14 +136,20 @@ bool voltearC(tMatrizChar& mat, int c){
 }
 bool voltearD(tMatrizChar& mat, int d) {
     bool estado = true;
-    uint8 aux[100];
+    uint8 aux;
     if (d > mat.rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
         estado = false;
     }
     else {
         for (int i = d; i < mat.rango_x; i++) {
             int j = 0;
-            aux[i] = mat.Matriz[i][j];
+            int m = mat.rango_x - d;
+            int n = mat.rango_x - 1;
+            aux = mat.Matriz[j][i];
+            mat.Matriz[j][i] = mat.Matriz[m][n];
+            mat.Matriz[m][n] = aux;
+            m--;
+            n--;
             j++;
         }
     }
