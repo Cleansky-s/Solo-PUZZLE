@@ -7,7 +7,7 @@ int menu() {
 	int opcion;
 	cout << "Elegir el tipo del juego introduciendo 1 o 2, 0 para salir" << endl;
 	cin >> opcion;
-	while (opcion != 0) {
+	while (opcion > 2|| opcion < 0) {
 		if (opcion > 2) { 
 			cout << "Lo sentimos, usted ha introducido el numero incorrecto, vuelva a introducir : " << endl;
 			cin >> opcion; 
@@ -18,8 +18,14 @@ int menu() {
 
 bool iniciar(tJuegoPM& jpm, string modo, int num) {
 	bool estado = true;
-	cout << "Elegir el modo que quieras:" << endl;
-	cin >> jpm.Modo;
+	int d = menu();
+	if (d == 1) {
+		jpm.Modo = "1D";
+	}
+	else if (d == 2){
+		jpm.Modo = "2D";
+	}
+	else estado = false;
 	if (cargar(jpm)) {
 
 	}
@@ -32,16 +38,17 @@ bool cargar(tJuegoPM& jpm) {
 	bool estado = true;
 	cout << "Nombre del archivo(sin extension ni modo del juego) :" << endl;
 	cin >> name;
+	name += ".txt";
 	ifstream entrada;
 	entrada.open(name);
-	if (entrada.is_open()&&cargar(jpm.Matriz, entrada)&& cargar(jpm.Matriz_Des, entrada)) {
-		
+	if (entrada.is_open()&&cargar(jpm.Matriz, entrada)&&cargar(jpm.Matriz_Des, entrada)) {
 		entrada >> jpm .Num_Max_Acc;
 		entrada.close();
 	}
 	else estado = false;
 	return estado; 
 }
+
 void mostrar(tJuegoPM const& jpm) {
 	cout << " Matriz de Origen" << endl;
 	cout << "  ";
@@ -75,6 +82,7 @@ void mostrar(tJuegoPM const& jpm) {
 	}
 	cout << endl << "El numero de intento es " << jpm.Num_Max_Acc << endl;
 }
+
 bool jugar(tJuegoPM& jpm) {
 	bool estado = true;
 	if (jpm.Num_Max_Acc == 0) {
@@ -87,6 +95,7 @@ bool jugar(tJuegoPM& jpm) {
 	}
 	return estado;
 }
+
 void accion(tJuegoPM& jpm) {
 	string accion;
 	cin >> accion;
@@ -122,16 +131,20 @@ void accion(tJuegoPM& jpm) {
 	}
 	else if (jpm.Modo == "2D") {
 		if (accion == "VV") {
+			voltearV(jpm.Matriz);
 		}
 		else if (accion == "SA") {
 			cin >> pos1.x >> pos1.y >> pos2.x >> pos2.y;
 			swap(jpm.Matriz, pos1, pos2);
 		}
 		else if (accion == "VH") {
+			voltearH(jpm.Matriz);
 		}
 		else if (accion == "RD") {
+			rotarD(jpm.Matriz);
 		}
-		else cout << "Has introducido mal" << endl;
+		else { cout << "Has introducido mal" << endl; }
 	}
-	}
+}
+
 
