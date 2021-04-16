@@ -5,7 +5,7 @@ using namespace std;
 
 bool cargar(tMatrizChar& mat, istream& ent) {
     bool estado;
-    ent >> mat.rango_x >> mat.rango_y; 
+    ent >> mat.rango_x >> mat.rango_y; //Guarda los rangos
     if (!cin) {
         estado = false;
     }
@@ -13,14 +13,14 @@ bool cargar(tMatrizChar& mat, istream& ent) {
         estado = true;
         for (int i = 0; i < mat.rango_x; i++) {
             for (int j = 0; j < mat.rango_y; j++) {
-                ent >> mat.Matriz[i][j];
+                ent >> mat.Matriz[i][j]; //Guarda los datos para imagenes
             }
         }
     }
     return estado;
 }
 
-bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {
+bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecargar ==
     int i = 0;
     int j = 0;
     bool estado = true;
@@ -35,17 +35,17 @@ bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {
     }
 
     return estado;
-}
+} 
 
 bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
     bool estado = false;
     uint8 aux;
-    if (pos2.x > mat.rango_x || pos2.y > mat.rango_y) {
+    if (pos2.x > mat.rango_x || pos2.y > mat.rango_y) { //No puede ser mayor que los rangos
     }
     else {
-        aux = mat.Matriz[pos1.x][pos1.y];
-        mat.Matriz[pos1.x][pos1.y] = mat.Matriz[pos2.x][pos2.y];
-        mat.Matriz[pos2.x][pos2.y] = aux;
+        aux = mat.Matriz[pos1.x][pos1.y];  //Guarda el primer variable  **
+        mat.Matriz[pos1.x][pos1.y] = mat.Matriz[pos2.x][pos2.y]; //Primer variable igual a otra
+        mat.Matriz[pos2.x][pos2.y] = aux; //Segunda variable igual a primera
     }
     return estado;
 }
@@ -57,7 +57,7 @@ bool swapC(tMatrizChar& mat, int f1, int f2) {
         estado = false;
     }
     else {
-        for (int i = 0; i < mat.rango_x; i++) {
+        for (int i = 0; i < mat.rango_x; i++) {   //**Linea 46
             aux[i] = mat.Matriz[f1][i];
             mat.Matriz[f1][i] = mat.Matriz[f2][i];
             mat.Matriz[f2][i] = aux[i];
@@ -66,14 +66,14 @@ bool swapC(tMatrizChar& mat, int f1, int f2) {
     return estado;
 }
 
-bool swapF(tMatrizChar& mat, int c1, int c2){
+bool swapF(tMatrizChar& mat, int c1, int c2){   
     bool estado = true;
     uint8 aux[100];
     if (c1 > mat.rango_y || c1 > mat.rango_y) {
         estado = false;
     }
     else {
-        for (int i = 0; i < mat.rango_y; i++) {
+        for (int i = 0; i < mat.rango_y; i++) { //**Linea 46
             aux[i] = mat.Matriz[i][c1];
             mat.Matriz[i][c1] = mat.Matriz[i][c2];
             mat.Matriz[i][c2] = aux[i];
@@ -88,9 +88,9 @@ bool swapD(tMatrizChar& mat, int d) {
         estado = false;
     }
     else {
-        for (int i = d; i < mat.rango_x; i++) {
-            int j = mat.rango_x - 1;
-            aux[i]= mat.Matriz[i][i];
+        for (int i = d; i < mat.rango_x; i++) {  //d es el diagonal **
+            int j = mat.rango_x - 1;        //Ultima variable de la columna
+            aux[i]= mat.Matriz[i][i];          //**Linea 46
             mat.Matriz[i][i] = mat.Matriz[j][j];
             mat.Matriz[j][j] = aux[i];
             j--;
@@ -106,9 +106,9 @@ bool voltearF(tMatrizChar& mat, int f) {
         estado = false;
     }
     else {
-        for (int i = 0; i < mat.rango_x; i++) {
+        for (int i = 0; i < mat.rango_x; i++) { //**Linea 95, misma logica
             int j = mat.rango_x - 1;
-            aux[i] = mat.Matriz[f][i];
+            aux[i] = mat.Matriz[f][i]; //linea 46
             mat.Matriz[f][i] = mat.Matriz[f][j];
             mat.Matriz[f][j] = aux[i];
             j--;
@@ -125,7 +125,7 @@ bool voltearC(tMatrizChar& mat, int c){
     }
     else {
         for (int i = 0; i < mat.rango_y; i++) {
-            int j = mat.rango_x - 1;
+            int j = mat.rango_x - 1; //Liena 95
             aux[i] = mat.Matriz[i][c];
             mat.Matriz[i][c] = mat.Matriz[j][c];
             mat.Matriz[j][c] = aux[i];
@@ -196,9 +196,9 @@ void rotarD(tMatrizChar& mat) {
 
     }
 }
-bool swapAdy(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
+bool swapAdy(tMatrizChar& mat, tCoor pos1, tCoor pos2) {  //He intentado muchas veces y no he salido
     return true;
 }
-bool VoltearID(tMatrizChar& mat) {
+bool VoltearID(tMatrizChar& mat) { //Same
     return true;
 }

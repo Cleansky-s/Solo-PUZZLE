@@ -50,9 +50,9 @@ bool cargar(tJuegoPM& jpm) {
 }
 
 void mostrar(tJuegoPM const& jpm) {
-	cout << " Matriz de Origen" << endl;
+	cout << " Matriz de Origen" << endl;  
 	cout << "  ";
-	for (int i = 0; i < jpm.Matriz.rango_x; i++) {
+	for (int i = 0; i < jpm.Matriz.rango_x; i++) { 
 		cout << setw(2) << i;
 	}
 	cout << endl;
@@ -101,7 +101,7 @@ void accion(tJuegoPM& jpm) {
 	cin >> accion;
 	int n, m;
 	tCoor pos1, pos2;
-	if (jpm.Modo == "1D") {
+	if (jpm.Modo == "1D") {  // Si es igual a 1D
 		if (accion == "SF") {
 			cin >> n >> m;
 			swapF(jpm.Matriz, n, m);
@@ -129,7 +129,7 @@ void accion(tJuegoPM& jpm) {
 		else
 			cout << "Has introducido mal" << endl;
 	}
-	else if (jpm.Modo == "2D") {
+	else if (jpm.Modo == "2D") {// Si es igual a 2D
 		if (accion == "VV") {
 			voltearV(jpm.Matriz);
 		}
