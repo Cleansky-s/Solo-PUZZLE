@@ -4,13 +4,13 @@ using namespace std;
 
 
 
-void mainPuzzle(int num, tPuzzle& jpm) {
+void mainPuzzle(int num, tPuzzle& jpm) { //La funcion principal de juego
 	bool fin = false;
 	bool win = false;
-	if (iniciar(jpm, jpm.Modo, num)) {
+	if (iniciar(jpm, jpm.Modo, num)) { //Iniciar el modo del puzzle
 		while (!fin) {
 			mostrar(jpm);
-			jugar(jpm);
+			jugar(jpm); //Funcion principal del juego
 			win = jpm.Matriz.Matriz == jpm.Matriz_Des.Matriz;
 			if (win) {
 				fin = true;

@@ -31,8 +31,9 @@ bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecarg
 
             while (estado && j < mat1.rango_y) {
 
-                if (mat1.Matriz[i][j] != mat2.Matriz[i][j])
+                if (mat1.Matriz[i][j] != mat2.Matriz[i][j]) {
                     estado = false;
+                }
 
                 j++;
             }
