@@ -6,12 +6,13 @@ using namespace std;
 
 void mainPuzzle(int num, tPuzzle& jpm) {
 	bool fin = false;
+	bool win = false;
 	if (iniciar(jpm, jpm.Modo, num)) {
 		while (!fin) {
 			mostrar(jpm);
 			jugar(jpm);
-			
-			if (jpm.Matriz.Matriz == jpm.Matriz_Des.Matriz) {
+			win = jpm.Matriz.Matriz == jpm.Matriz_Des.Matriz;
+			if (win) {
 				fin = true;
 				cout << "Has conseguido!!!" << endl;
 			}
