@@ -19,7 +19,6 @@ bool cargar(tMatrizChar& mat, istream& ent) {
     }
     return estado;
 }
-
 bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecargar ==
     int i = 0;
     int j = 0;
@@ -36,7 +35,6 @@ bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecarg
 
     return estado;
 } 
-
 bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
     bool estado = false;
     uint8 aux;
@@ -49,23 +47,21 @@ bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
     }
     return estado;
 }
-
 bool swapC(tMatrizChar& mat, int f1, int f2) {
     bool estado = true;
-    uint8 aux[100];
+    uint8 aux;
     if (f1 > mat.rango_x || f2 > mat.rango_x) {
         estado = false;
     }
     else {
-        for (int i = 0; i < mat.rango_x; i++) {   //**Linea 46
-            aux[i] = mat.Matriz[f1][i];
-            mat.Matriz[f1][i] = mat.Matriz[f2][i];
-            mat.Matriz[f2][i] = aux[i];
+        for (int i = 0; i < mat.rango_y; i++) {   //**Linea 46
+            aux = mat.Matriz[i][f1];
+            mat.Matriz[i][f1] = mat.Matriz[i][f2];
+            mat.Matriz[i][f2] = aux;
         }
     }
     return estado;
 }
-
 bool swapF(tMatrizChar& mat, int c1, int c2){   
     bool estado = true;
     uint8 aux[100];
@@ -83,17 +79,17 @@ bool swapF(tMatrizChar& mat, int c1, int c2){
 }
 bool swapD(tMatrizChar& mat, int d) {
     bool estado = true;
-    uint8 aux[100];
+    uint8 aux;
     if (d > mat.rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
         estado = false;
     }
     else {
-        for (int i = d; i < mat.rango_x; i++) {  //d es el diagonal **
-            int j = mat.rango_x - 1;        //Ultima variable de la columna
-            aux[i]= mat.Matriz[i][i];          //**Linea 46
-            mat.Matriz[i][i] = mat.Matriz[j][j];
-            mat.Matriz[j][j] = aux[i];
-            j--;
+        int i = 0;
+        for (int j = d; j < mat.rango_y; j++) {  //d es el diagonal
+            aux = mat.Matriz[i][j];          //**Linea 46
+            mat.Matriz[i][j] = mat.Matriz[j][i];
+            mat.Matriz[j][i] = aux;
+            i++;
         }
     }
     return estado;
@@ -185,20 +181,55 @@ void voltearH(tMatrizChar& mat) {
 
 }
 void rotarD(tMatrizChar& mat) {
-    uint8 aux[100];
+    tMatrizChar m;
+    m.rango_x = mat.rango_y;
+    m.rango_y = mat.rango_x;
     int d = mat.rango_x / 2;
-    for (int i = d; i < mat.rango_x; i++) {
-        int j = mat.rango_x - 1;
-        aux[i] = mat.Matriz[i][i];
-        mat.Matriz[i][i] = mat.Matriz[j][j];
-        mat.Matriz[j][j] = aux[i];
-        j--;
-
+    for (int i = 0; i < m.rango_x; i++) {
+        for (int j = 0; j < m.rango_y; j++) {
+            m.Matriz[i][j] = mat.Matriz[mat.rango_x - j - 1][i];
+        }
     }
+    mat = m;
 }
 bool swapAdy(tMatrizChar& mat, tCoor pos1, tCoor pos2) {  //He intentado muchas veces y no he salido
-    return true;
+    bool estado = true;
+    unsigned char aux;
+    if (pos1.x < 1 || pos1.x > mat.rango_y - 2 || pos1.y < 1 || pos1.y > mat.rango_x - 2 ||
+        pos2.x < 1 || pos2.x > mat.rango_y - 2 || pos2.y < 1 || pos2.y > mat.rango_x - 2 ||
+        (abs(pos1.x - pos2.x) < 3 && abs(pos1.y - pos2.y) < 3))
+        estado = false;   //Comprueba que las áreas de las coordenadas se encuentren en la matriz y no se solapen
+    else {
+
+        for (int i = 1; i > -2; i--) {
+
+            for (int j = -1; j < 2; j++) {
+
+                if (i == 0 && j == 0)
+                    j++;
+
+                aux = mat.Matriz[pos1.y + i][pos1.x + j];
+                mat.Matriz[pos1.y + i][pos1.x + j] = mat.Matriz[pos2.y + i][pos2.x + j];
+                mat.Matriz[pos2.y + i][pos2.x + j] = aux;
+            }
+        }
+    }
+
+    return estado;
 }
 bool VoltearID(tMatrizChar& mat) { //Same
-    return true;
+    bool estado = true; unsigned char aux;
+    if (mat.rango_x != mat.rango_y)
+        estado = false;   //Comprueba que la matriz sea cuadrada
+    else {
+
+        for (int j = 1; j < mat.rango_y; j++)
+            for (int i = 0; i < j; i++) {
+                aux = mat.Matriz[i][j];
+                mat.Matriz[i][j] = mat.Matriz[j][i];
+                mat.Matriz[j][i] = aux;
+            }
+    }
+
+    return estado;
 }

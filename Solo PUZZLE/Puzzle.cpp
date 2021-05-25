@@ -1,55 +1,54 @@
-#include "JuegoPM.h"
+#include "Puzzle.h"
 
 using namespace std;
 
 
-int menu() {
-	int opcion;
-	cout << "Elegir el tipo del juego introduciendo 1 o 2, 0 para salir" << endl;
-	cin >> opcion;
-	while (opcion > 2|| opcion < 0) {
-		if (opcion > 2) { 
-			cout << "Lo sentimos, usted ha introducido el numero incorrecto, vuelva a introducir : " << endl;
-			cin >> opcion; 
+
+void mainPuzzle(int num, tPuzzle& jpm) {
+	bool fin = false;
+	if (iniciar(jpm, jpm.Modo, num)) {
+		while (!fin) {
+			mostrar(jpm);
+			jugar(jpm);
+			
+			if (jpm.Matriz.Matriz == jpm.Matriz_Des.Matriz) {
+				fin = true;
+				cout << "Has conseguido!!!" << endl;
+			}
+			else if (jpm.Num_Max_Acc == 0) {
+				fin = true; 
+				mostrar(jpm);
+				cout << "No has conseguido resolver el puzzle :-(" << endl;
+			}
+			pausa();
 		}
 	}
-	return opcion;
+	else cout << "No hemos encontrado el archivo :-(" << endl;
 }
-
-bool iniciar(tJuegoPM& jpm, string modo, int num) {
+bool iniciar(tPuzzle& jpm, string modo, int num) {
 	bool estado = true;
-	int d = menu();
-	if (d == 1) {
+	int d = num;
+	if (d == 0) {
 		jpm.Modo = "1D";
 	}
-	else if (d == 2){
+	else if (d == 1){
 		jpm.Modo = "2D";
-	}
-	else estado = false;
-	if (cargar(jpm)) {
-
 	}
 	else estado = false;
 	return estado;
 }
-
-bool cargar(tJuegoPM& jpm) {
-	string name;
-	bool estado = true;
-	cout << "Nombre del archivo(sin extension ni modo del juego) :" << endl;
-	cin >> name;
-	name += ".txt";
+bool cargar(tPuzzle& jpm) {
 	ifstream entrada;
-	entrada.open(name);
-	if (entrada.is_open()&&cargar(jpm.Matriz, entrada)&&cargar(jpm.Matriz_Des, entrada)) {
+	entrada.open(jpm.file);
+	bool estado = entrada.is_open();
+	if (estado&&cargar(jpm.Matriz, entrada)&&cargar(jpm.Matriz_Des, entrada)) {
 		entrada >> jpm .Num_Max_Acc;
 		entrada.close();
 	}
 	else estado = false;
 	return estado; 
 }
-
-void mostrar(tJuegoPM const& jpm) {
+void mostrar(tPuzzle const& jpm) {
 	cout << " Matriz de Origen" << endl;  
 	cout << "  ";
 	for (int i = 0; i < jpm.Matriz.rango_x; i++) { 
@@ -82,8 +81,7 @@ void mostrar(tJuegoPM const& jpm) {
 	}
 	cout << endl << "El numero de intento es " << jpm.Num_Max_Acc << endl;
 }
-
-bool jugar(tJuegoPM& jpm) {
+bool jugar(tPuzzle& jpm) {
 	bool estado = true;
 	if (jpm.Num_Max_Acc == 0) {
 		estado = false;
@@ -95,8 +93,7 @@ bool jugar(tJuegoPM& jpm) {
 	}
 	return estado;
 }
-
-void accion(tJuegoPM& jpm) {
+void accion(tPuzzle& jpm) {
 	string accion;
 	cin >> accion;
 	int n, m;

@@ -140,16 +140,49 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Coordenada.cpp" />
-    <ClCompile Include="JuegoPM.cpp" />
+    <ClCompile Include="Puzzle.cpp" />
     <ClCompile Include="Matriz.cpp" />
     <ClCompile Include="Solo PUZZLE.cpp" />
     <ClCompile Include="UtilidadeSYS.cpp" />
+    <ClCompile Include="ListaPuzzles.cpp" />
+    
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordenada.h" />
-    <ClInclude Include="JuegoPM.h" />
+    <ClInclude Include="Puzzle.h" />
     <ClInclude Include="Matriz.h" />
     <ClInclude Include="UtilidadeSYS.h" />
+    <ClCompile Include="ListaPuzzles.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="cara_1D.txt">
+    </Text>
+    <Text Include="datosPuzzles.txt">
+    </Text>
+    <Text Include="fichSA_2D.txt">
+    </Text>
+    <Text Include="fichSC_1D.txt">
+    </Text>
+    <Text Include="fichSD_1D.txt">
+    </Text>
+    <Text Include="fichSF_1D.txt">
+    </Text>
+    <Text Include="fichVC_1D.txt">
+    </Text>
+    <Text Include="fichVD_1D.txt">
+    </Text>
+    <Text Include="fichVD_2D.txt">
+    </Text>
+    <Text Include="fichVF_1D.txt">
+    </Text>
+    <Text Include="patitaRD_2D.txt">
+    </Text>
+    <Text Include="patitaVH_2D.txt">
+    </Text>
+    <Text Include="patitaVV_2D.txt">
+    </Text>
+    <Text Include="torre1_1D.txt">
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
