@@ -31,7 +31,7 @@ bool cargar(tPuzzlesReunidos& jr) { //cargar las listas y los datos de puzzles
 }
 void guardar(const tPuzzlesReunidos& listas) { //Guarda los cambios
 	fstream salida;
-	salida.open("datosPuzzles.txt");
+	salida.open("D://c//datosPuzzles.txt");
 	bool estado = salida.is_open();
 	if (estado) {
 		for (int i = 0; i < MODO; i++) {
@@ -66,15 +66,15 @@ int elegirPuzzle(tListaPuzzles& lp) { //Una funcion que vuele el opcion que ha e
 bool insertarOrdenado(tListaPuzzles& l, tPuzzle* p) { //Insertar un tPuzzle a la lista
 	bool estado = false;
 	int pos = l.cont - 1;
-	l.cont++;
 	if (l.cont < MAX_PUZZLES) { //No puede ser mayor que el maximo puzzles
 		while (!estado && pos >= 0) {
 			estado = (p->Num_Max_Acc > l.puzzle[pos]->Num_Max_Acc); //Se ordena de forma menor a mayor
 			pos--;
+		}pos += 2;
+		for (int i = l.cont; i > pos; i--) {
+			l.puzzle[i] = l.puzzle[i - 1];
 		}
-		for (int i = pos; i < l.cont; i++) {
-			l.puzzle[i] = l.puzzle[i + 1];
-		}
+		l.cont++;
 		l.puzzle[pos] = p;
 		cargar(*l.puzzle[pos]);
 	}
@@ -133,6 +133,7 @@ void mainPuzzlesReunidos(tPuzzlesReunidos& t) {
 		cin >> opp.file;
 		cout << "Escriba el modo del puzzle en que se encuentra: (1:1D,2:2D)";
 		cin >> modo;
+		modo--;
 		cout << "\n";
 		tPuzzle* pointer = new tPuzzle;  //Un puntero que asigna a tPuzzle
 		pointer = &opp; // Se asigna a la direccion de opp
