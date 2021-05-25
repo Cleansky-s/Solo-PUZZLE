@@ -87,7 +87,7 @@ bool swapF(tMatrizChar& mat, int c1, int c2){
 bool swapD(tMatrizChar& mat, int d) {
     bool estado = true;
     uint8 aux;
-    if (d > mat.rango_y || d > mat.rango_y || mat.rango_x != mat.rango_y) {
+    if (mat.rango_x != mat.rango_y || d >= mat.rango_y || d <= -mat.rango_x) {
         estado = false;
     }
     else {
