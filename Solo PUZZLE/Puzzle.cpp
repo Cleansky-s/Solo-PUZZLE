@@ -6,13 +6,14 @@ using namespace std;
 
 void mainPuzzle(int num, tPuzzle& jpm) { //La funcion principal de juego
 	bool fin = false;
-	bool win = false;
+	bool winGAME = false;
 	if (iniciar(jpm, jpm.Modo, num)) { //Iniciar el modo del puzzle
 		while (!fin) {
 			mostrar(jpm);
 			jugar(jpm); //Funcion principal del juego
-			win = jpm.Matriz.Matriz == jpm.Matriz_Des.Matriz;
-			if (win) {
+			winGAME = win(jpm.Matriz,jpm.Matriz_Des);
+			if (winGAME) {
+				mostrar(jpm);
 				fin = true;
 				cout << "Has conseguido!!!" << endl;
 			}

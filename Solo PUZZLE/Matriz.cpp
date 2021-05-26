@@ -41,7 +41,29 @@ bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecarg
         }
     }
     return estado;
-} 
+} bool win(tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecargar ==
+    bool estado = false;
+    int i = 0;
+
+    if (mat1.rango_x == mat2.rango_x && mat1.rango_y == mat2.rango_y) { //Deben tener el mismo numero de filas y columnas
+        estado = true;
+
+        while (estado && i < mat1.rango_x) {  // y comprueba casilla a casilla que coincidan
+            int j = 0;
+
+            while (estado && j < mat1.rango_y) {
+
+                if (mat1.Matriz[i][j] != mat2.Matriz[i][j]) {
+                    estado = false;
+                }
+
+                j++;
+            }
+            i++;
+        }
+    }
+    return estado;
+}
 bool swap(tMatrizChar& mat, tCoor pos1, tCoor pos2) {
     bool estado = false;
     uint8 aux;
