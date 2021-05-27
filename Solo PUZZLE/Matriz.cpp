@@ -181,16 +181,13 @@ bool voltearD(tMatrizChar& mat, int d) {
     return estado;
 }
 void voltearV(tMatrizChar& mat) {
-        uint8 aux[100];
-        int n;
+        uint8 aux;
         int medio = mat.rango_x / 2;
-        for (int i = 0; i < mat.rango_y; i++) {
-            n = 0;
-            for(int j = mat.rango_x - 1;j >= medio;j--){
-                aux[i] = mat.Matriz[i][n];
-                mat.Matriz[i][n] = mat.Matriz[i][j];
-                mat.Matriz[i][j] = aux[i];
-                n++;
+        for (int i = 0; i < medio; i++) {
+            for(int j = 0;j < mat.rango_x;j++){
+                aux = mat.Matriz[j][i];
+                mat.Matriz[j][i] = mat.Matriz[j][mat.rango_x - i - 1];
+                mat.Matriz[j][mat.rango_x - i - 1] = aux;
         }
     }
 }

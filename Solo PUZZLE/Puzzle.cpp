@@ -11,18 +11,21 @@ void mainPuzzle(int num, tPuzzle& jpm) { //La funcion principal de juego
 		while (!fin) {
 			mostrar(jpm);
 			jugar(jpm); //Funcion principal del juego
-			winGAME = win(jpm.Matriz,jpm.Matriz_Des);
+			winGAME = jpm.Matriz == jpm.Matriz_Des;
 			if (winGAME) {
+				borrar();
 				mostrar(jpm);
 				fin = true;
 				cout << "Has conseguido!!!" << endl;
 			}
 			else if (jpm.Num_Max_Acc == 0) {
 				fin = true; 
+				borrar();
 				mostrar(jpm);
 				cout << "No has conseguido resolver el puzzle :-(" << endl;
 			}
 			pausa();
+			borrar();
 		}
 	}
 	else cout << "No hemos encontrado el archivo :-(" << endl;
@@ -141,6 +144,10 @@ void accion(tPuzzle& jpm) {
 		}
 		else if (accion == "RD") {
 			rotarD(jpm.Matriz);
+		}
+		else if (accion == "SAd") {
+			cin >> pos1.x >> pos1.y >> pos2.x >> pos2.y;
+			swapAdy(jpm.Matriz,pos1,pos2);
 		}
 		else { cout << "Has introducido mal" << endl; }
 	}

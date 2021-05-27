@@ -48,6 +48,7 @@ int elegirPuzzle(tListaPuzzles& lp) { //Una funcion que vuele el opcion que ha e
 	int op;
 	cout << "\n" << "Elige un reto:";
 	cin >> op;
+	borrar();
 	while (op < -2 || op > lp.cont) {//si es mayor que la lista o menor que -2
 		cout << endl;
 		cout << "No has elegido bien, vuelva a intentar:";
@@ -107,6 +108,7 @@ void mainPuzzlesReunidos(tPuzzlesReunidos& t) {
 
 	cout << "\n\n" << "Elige una opcion " << endl;
 	cin >> op;   //Opcion que puede elegir
+	borrar();
 	if (op == 1) {
 		ops = elegirPuzzle(t[0]);
 		if (ops!= 0) {
