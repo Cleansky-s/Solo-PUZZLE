@@ -23,32 +23,28 @@ bool operator == (tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecarg
     bool estado = false;
     int i = 0;
 
-    if (mat1.rango_x == mat2.rango_x && mat1.rango_y == mat2.rango_y) { //Deben tener el mismo numero de filas y columnas
+    if (mat1.rango_x == mat2.rango_x && mat1.rango_y == mat2.rango_y) { // comprueba que tienen el mismo rango
         estado = true;
-
-        while (estado && i < mat1.rango_x) {  // y comprueba casilla a casilla que coincidan
+        while (estado && i < mat1.rango_x) {  
             int j = 0;
-
             while (estado && j < mat1.rango_y) {
-
                 if (mat1.Matriz[i][j] != mat2.Matriz[i][j]) {
                     estado = false;
                 }
-
                 j++;
             }
             i++;
         }
+        return estado;
     }
-    return estado;
 } bool win(tMatrizChar const& mat1, tMatrizChar const& mat2) {//Sobrecargar ==
     bool estado = false;
     int i = 0;
 
-    if (mat1.rango_x == mat2.rango_x && mat1.rango_y == mat2.rango_y) { //Deben tener el mismo numero de filas y columnas
+    if (mat1.rango_x == mat2.rango_x && mat1.rango_y == mat2.rango_y) { 
         estado = true;
 
-        while (estado && i < mat1.rango_x) {  // y comprueba casilla a casilla que coincidan
+        while (estado && i < mat1.rango_x) {
             int j = 0;
 
             while (estado && j < mat1.rango_y) {
@@ -218,13 +214,13 @@ void rotarD(tMatrizChar& mat) {
     }
     mat = m;
 }
-bool swapAdy(tMatrizChar& mat, tCoor pos1, tCoor pos2) {  //He intentado muchas veces y no he salido
+bool swapAdy(tMatrizChar& mat, tCoor pos1, tCoor pos2) {  
     bool estado = true;
     unsigned char aux;
-    if (pos1.x < 1 || pos1.x > mat.rango_y - 2 || pos1.y < 1 || pos1.y > mat.rango_x - 2 ||
+    if (pos1.x < 1 || pos1.x > mat.rango_y - 2 || pos1.y < 1 || pos1.y > mat.rango_x - 2 ||  //comprueba que estan en rango
         pos2.x < 1 || pos2.x > mat.rango_y - 2 || pos2.y < 1 || pos2.y > mat.rango_x - 2 ||
         (abs(pos1.x - pos2.x) < 3 && abs(pos1.y - pos2.y) < 3))
-        estado = false;   //Comprueba que las áreas de las coordenadas se encuentren en la matriz y no se solapen
+        estado = false;   
     else {
 
         for (int i = 1; i > -2; i--) {
