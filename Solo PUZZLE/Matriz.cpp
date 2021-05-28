@@ -121,7 +121,7 @@ bool swapD(tMatrizChar& mat, int d) {
 }
 bool voltearF(tMatrizChar& mat, int f) {
     bool estado = true;
-    uint8 aux[100];
+    uint8 aux;
     
     if (f > mat.rango_x) {
         estado = false;
@@ -129,7 +129,7 @@ bool voltearF(tMatrizChar& mat, int f) {
     else {
         for (int i = 0; i < mat.rango_x; i++) { //**Linea 95, misma logica
             int j = mat.rango_x - 1;
-            aux[i] = mat.Matriz[f][i]; //linea 46
+            aux = mat.Matriz[f][i]; //linea 46
             mat.Matriz[f][i] = mat.Matriz[f][j];
             mat.Matriz[f][j] = aux[i];
             j--;
@@ -139,7 +139,7 @@ bool voltearF(tMatrizChar& mat, int f) {
 }
 bool voltearC(tMatrizChar& mat, int c){
     bool estado = true;
-    uint8 aux[100];
+    uint8 aux;
 
     if (c > mat.rango_y) {
         estado = false;
@@ -147,7 +147,7 @@ bool voltearC(tMatrizChar& mat, int c){
     else {
         for (int i = 0; i < mat.rango_y; i++) {
             int j = mat.rango_x - 1; //Liena 95
-            aux[i] = mat.Matriz[i][c];
+            aux = mat.Matriz[i][c];
             mat.Matriz[i][c] = mat.Matriz[j][c];
             mat.Matriz[j][c] = aux[i];
             j--;
@@ -157,7 +157,7 @@ bool voltearC(tMatrizChar& mat, int c){
 }
 bool voltearD(tMatrizChar& mat, int d) {
     bool estado = true;
-    uint8 aux[100];
+    uint8 aux;
     if (d > mat.rango_x || d > mat.rango_y || mat.rango_x != mat.rango_y) {
         estado = false;
     }
@@ -166,7 +166,7 @@ bool voltearD(tMatrizChar& mat, int d) {
         int m = mat.rango_x - d;
         int n = mat.rango_x - 1;
         for (int i = d; i < mat.rango_x; i++) {
-            aux[j] = mat.Matriz[j][i];
+            aux = mat.Matriz[j][i];
             mat.Matriz[j][i] = mat.Matriz[m][n];
             mat.Matriz[m][n] = aux[j];
             m--;
@@ -188,13 +188,13 @@ void voltearV(tMatrizChar& mat) {
     }
 }
 void voltearH(tMatrizChar& mat) {
-    uint8 aux[100];
+    uint8 aux;
     int n;
     int medio = mat.rango_y / 2;
     for (int i = 0; i < mat.rango_x; i++) {
         n = 0;
         for (int j = mat.rango_y - 1; j >= medio; j--) {
-            aux[i] = mat.Matriz[n][i];
+            aux = mat.Matriz[n][i];
             mat.Matriz[n][i] = mat.Matriz[j][i];
             mat.Matriz[j][i] = aux[i];
             n++;
