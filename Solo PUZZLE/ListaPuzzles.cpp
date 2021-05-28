@@ -11,7 +11,7 @@ void inicializar(tPuzzlesReunidos& jr){
 }
 bool cargar(tPuzzlesReunidos& jr) { //cargar las listas y los datos de puzzles
 	ifstream entrada;
-	entrada.open("D://c//datosPuzzles.txt"); 
+	entrada.open("datosPuzzles.txt"); 
 	bool estado = entrada.is_open();
 	if (estado) {
 		for (int i = 0; i < 2; i++) { //cargar los datos de puzzles
@@ -31,7 +31,7 @@ bool cargar(tPuzzlesReunidos& jr) { //cargar las listas y los datos de puzzles
 }
 void guardar(const tPuzzlesReunidos& listas) { //Guarda los cambios
 	fstream salida;
-	salida.open("D://c//datosPuzzles.txt");
+	salida.open("datosPuzzles.txt");
 	bool estado = salida.is_open();
 	if (estado) {
 		for (int i = 0; i < MODO; i++) {
