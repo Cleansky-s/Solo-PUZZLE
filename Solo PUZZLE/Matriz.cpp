@@ -131,7 +131,7 @@ bool voltearF(tMatrizChar& mat, int f) {
             int j = mat.rango_x - 1;
             aux = mat.Matriz[f][i]; //linea 46
             mat.Matriz[f][i] = mat.Matriz[f][j];
-            mat.Matriz[f][j] = aux[i];
+            mat.Matriz[f][j] = aux;
             j--;
         }
     }
@@ -149,7 +149,7 @@ bool voltearC(tMatrizChar& mat, int c){
             int j = mat.rango_x - 1; //Liena 95
             aux = mat.Matriz[i][c];
             mat.Matriz[i][c] = mat.Matriz[j][c];
-            mat.Matriz[j][c] = aux[i];
+            mat.Matriz[j][c] = aux;
             j--;
         }
     }
@@ -168,7 +168,7 @@ bool voltearD(tMatrizChar& mat, int d) {
         for (int i = d; i < mat.rango_x; i++) {
             aux = mat.Matriz[j][i];
             mat.Matriz[j][i] = mat.Matriz[m][n];
-            mat.Matriz[m][n] = aux[j];
+            mat.Matriz[m][n] = aux;
             m--;
             n--;
             j++;
@@ -196,7 +196,7 @@ void voltearH(tMatrizChar& mat) {
         for (int j = mat.rango_y - 1; j >= medio; j--) {
             aux = mat.Matriz[n][i];
             mat.Matriz[n][i] = mat.Matriz[j][i];
-            mat.Matriz[j][i] = aux[i];
+            mat.Matriz[j][i] = aux;
             n++;
         }
     }

@@ -90,10 +90,20 @@ void mostrar(tListaPuzzles& l) { //Mostrar la lista de puzzles
 }
 void ordernar(tListaPuzzles& l,int op) { //Se ordena de forma inversa.
 	tPuzzle* aux = NULL;
-	for (int i = 0; i < l.cont / 2; i++) {
-		aux = l.puzzle[i];
-		l.puzzle[i] = l.puzzle[l.cont - 1 - i];
-		l.puzzle[l.cont - 1 - i] = aux;
+	bool estado = true;
+	int pos = 0;
+	if (op == -1) {
+		while (estado && pos < l.cont - 1) {
+			if (l.puzzle[pos]->Num_Max_Acc > l.puzzle[pos + 1]->Num_Max_Acc) {
+				aux = l.puzzle[pos + 1];
+				l.puzzle[pos + 1] = l.puzzle[pos];
+				l.puzzle[pos] = aux;
+			}
+			pos++;
+		}
+	}
+	else if (op == -2) {
+
 	}
 }
 void mainPuzzlesReunidos(tPuzzlesReunidos& t) {
