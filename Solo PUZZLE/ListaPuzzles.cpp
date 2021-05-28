@@ -11,7 +11,7 @@ void inicializar(tPuzzlesReunidos& jr){
 }
 bool cargar(tPuzzlesReunidos& jr) { //cargar las listas y los datos de puzzles
 	ifstream entrada;
-	entrada.open("datosPuzzles.txt"); 
+	entrada.open("D://c//datosPuzzles.txt"); 
 	bool estado = entrada.is_open();
 	if (estado) {
 		for (int i = 0; i < 2; i++) { //cargar los datos de puzzles
@@ -31,7 +31,7 @@ bool cargar(tPuzzlesReunidos& jr) { //cargar las listas y los datos de puzzles
 }
 void guardar(const tPuzzlesReunidos& listas) { //Guarda los cambios
 	fstream salida;
-	salida.open("datosPuzzles.txt");
+	salida.open("D://c//datosPuzzles.txt");
 	bool estado = salida.is_open();
 	if (estado) {
 		for (int i = 0; i < MODO; i++) {
@@ -91,19 +91,31 @@ void mostrar(tListaPuzzles& l) { //Mostrar la lista de puzzles
 void ordernar(tListaPuzzles& l,int op) { //Se ordena de forma inversa.
 	tPuzzle* aux = NULL;
 	bool estado = true;
-	int pos = 0;
-	if (op == -1) {
-		while (estado && pos < l.cont - 1) {
-			if (l.puzzle[pos]->Num_Max_Acc > l.puzzle[pos + 1]->Num_Max_Acc) {
-				aux = l.puzzle[pos + 1];
-				l.puzzle[pos + 1] = l.puzzle[pos];
-				l.puzzle[pos] = aux;
+	if (op == -2) {
+		for (int i = 0; i < l.cont; i++) {
+			int pos = 0;
+			while (estado && pos < l.cont - 1) {
+				while (l.puzzle[pos]->Num_Max_Acc > l.puzzle[pos + 1]->Num_Max_Acc) {
+					aux = l.puzzle[pos + 1];
+					l.puzzle[pos + 1] = l.puzzle[pos];
+					l.puzzle[pos] = aux;
+				}
+				pos++;
 			}
-			pos++;
 		}
 	}
-	else if (op == -2) {
-
+	else if (op == -1) {
+		for (int i = 0; i < l.cont; i++) {
+			int pos = l.cont - 1;
+			while (estado && pos > 0) {
+				while (l.puzzle[pos]->Num_Max_Acc > l.puzzle[pos - 1]->Num_Max_Acc) {
+					aux = l.puzzle[pos - 1];
+					l.puzzle[pos - 1] = l.puzzle[pos];
+					l.puzzle[pos] = aux;
+				}
+				pos--;
+			}
+		}
 	}
 }
 void mainPuzzlesReunidos(tPuzzlesReunidos& t) {
