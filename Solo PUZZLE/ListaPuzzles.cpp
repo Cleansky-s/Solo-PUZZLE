@@ -41,7 +41,7 @@ void guardar(const tPuzzlesReunidos& listas) { //Guarda los cambios
 				salida << listas[i].puzzle[j]->file << "\n";
 			}
 		}
-		salida.close();
+		salida.close(); //cierre la salida
 	}
 }
 int elegirPuzzle(tListaPuzzles& lp) { //Una funcion que vuele el opcion que ha elegido el usuario
@@ -103,7 +103,7 @@ void ordernar(tListaPuzzles& l,int op) { //Se ordena de forma inversa.
 				}
 				pos++;
 			}
-		}delete aux;
+		}
 	}
 	else if (op == -1) {
 		for (int i = 0; i < l.cont; i++) {
@@ -116,7 +116,7 @@ void ordernar(tListaPuzzles& l,int op) { //Se ordena de forma inversa.
 				}
 				pos--;
 			}
-		}delete aux;
+		}
 	}
 }
 void mainPuzzlesReunidos(tPuzzlesReunidos& t) {
@@ -169,7 +169,6 @@ void mainPuzzlesReunidos(tPuzzlesReunidos& t) {
 		else
 			cout << "No hemos encontrado el fichero que has introducido" << endl;
 		
-		delete pointer;
 		mainPuzzlesReunidos(t);
 	}
 	else if (op == 0) {
